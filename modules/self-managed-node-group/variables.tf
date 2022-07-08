@@ -572,6 +572,12 @@ variable "iam_role_name" {
   default     = null
 }
 
+variable "iam_role_name_no_append" {
+  description = "Prevents appending things to iam_role_name"
+  type        = bool
+  default     = false
+}
+
 variable "iam_role_use_name_prefix" {
   description = "Determines whether cluster IAM role name (`iam_role_name`) is used as a prefix"
   type        = bool

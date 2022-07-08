@@ -503,7 +503,7 @@ resource "aws_security_group_rule" "this" {
 ################################################################################
 
 locals {
-  iam_role_name = coalesce(var.iam_role_name, "${var.name}-node-group")
+  iam_role_name = var.iam_role_name_no_append ? var.iam_role_name : coalesce(var.iam_role_name, "${var.name}-node-group")
 
   iam_role_policy_prefix = "arn:${data.aws_partition.current.partition}:iam::aws:policy"
 
