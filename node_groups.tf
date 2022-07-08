@@ -342,6 +342,8 @@ module "self_managed_node_group" {
 
   create = try(each.value.create, true)
 
+  prefix_separator = try(each.value.prefix_separator, var.self_managed_node_group_defaults.prefix_separator, true)
+
   cluster_name      = aws_eks_cluster.this[0].name
   cluster_ip_family = var.cluster_ip_family
 

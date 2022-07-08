@@ -98,6 +98,8 @@ module "eks" {
   self_managed_node_group_defaults = {
     create_security_group = false
 
+    prefix_separator = "-" # defaults to "-"
+
     # enable discovery of autoscaling groups by cluster-autoscaler
     autoscaling_group_tags = {
       "k8s.io/cluster-autoscaler/enabled" : true,
@@ -112,6 +114,8 @@ module "eks" {
     # Bottlerocket node group
     bottlerocket = {
       name = "bottlerocket-self-mng"
+
+      prefix_separator = ":" # defaults to "-"
 
       platform      = "bottlerocket"
       ami_id        = data.aws_ami.eks_default_bottlerocket.id
